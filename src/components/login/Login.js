@@ -4,7 +4,7 @@ import { GoogleLogin } from 'react-google-login';
 import y from '../images/img3.png';
 import './Login.css';
 
-const CLIENT_ID = '237430262201-i7vj50gpthm0hnbkdqcdkphp6gsv7tok.apps.googleusercontent.com';  // Your Google Client ID
+const CLIENT_ID = '606074391636-0725jnvffuktld7qbkk9ok05k61cr7h8.apps.googleusercontent.com';  // Your Google Client ID
 
 function Login() {
   const onSuccess = (response) => {
