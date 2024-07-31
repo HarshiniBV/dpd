@@ -1,43 +1,52 @@
-import React from 'react'
-import './Home.css'
-import { Link } from 'react-router-dom'
-import { FaSearch, FaFilter } from 'react-icons/fa';
+import React from 'react';
+import './Home.css';
+import { Link } from 'react-router-dom';
+import z from '../images/img4.jpg';
+import { Outlet } from 'react-router-dom';
 
 function Home() {
   return (
-    <div>
-         <ul className='nav justify-content-aorund shadow-lg'>
-            <li className='nav-item'>
-                <Link className='nav-link text-dark' to='/'>Projects</Link>
-            </li>
-            <li className='nav-item'>
-                <Link className='nav-link text-dark' to='Duplicator'>Duplicator</Link>
-            </li>
-        </ul>
-
-        <div className="search-page">
-      <h1>Explore</h1>
-      <p>Instantly book world class audio engineers and recording studios.</p>
-      <div className="search-bar-container">
-        <input type="text" className="search-input" placeholder="EngineEars" value="Kendrick Lamar" />
-        <button className="filter-button">
-          <FaFilter />
-          Filters
-        </button>
-        <button className="search-button">
-          <FaSearch />
-        </button>
-      </div>
-      <div className="result-container">
-        <img src="/path/to/profile-pic.jpg" alt="Kendrick Lamar" className="profile-pic" />
-        <div className="result-details">
-          <p className="result-name">Kendrick Lamar</p>
-          <p className="result-description">Artist - @kendricklamar</p>
+    <div className="home-container">
+      <div className="card text-bg-dark">
+        
+        <img src={z} className="card-img" alt="Background" />
+        <div className="gradient-overlay"></div>
+        <div className="card-img-overlay">
+          <div className="search-page d-flex justify-content-center">
+            <div>
+              <ul className='nav justify-content-around'>
+                <li className='nav-item'>
+                  <Link className='nav-link text-white' to='projects'>Projects</Link>
+                </li>
+                <li className='nav-item'>
+                  <Link className='nav-link text-white' to='duplicator'>Duplicator</Link>
+                </li>
+              </ul>
+              <div><Outlet/></div>
+            </div>
+            <h1 className='p1'>PROJECTS</h1>
+            <p>Find, Learn, and Inspire with College Projects</p>
+            <div className="container-fluid">
+              <form className="d-flex mx-auto w-50" role="search">
+                <input className="form-control me-2" type="search" placeholder="Search..." aria-label="Search" />
+                <button className="btn btn-outline-success bg-success text-white" type="submit">Filter</button>
+              </form>
+              <div>
+                <div className="filters">
+                  <button type="button" className="btn btn-dark m-2">Type</button>
+                  <button type="button" className="btn btn-dark m-2">Branch</button>
+                  <button type="button" className="btn btn-dark m-2">Year</button>
+                  <button type="button" className="btn btn-dark m-2">Level</button>
+                </div>
+              </div>
+            </div>
+            <div className="result-container"></div>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
+

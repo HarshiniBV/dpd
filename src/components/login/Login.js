@@ -22,7 +22,7 @@ function Login() {
 
     <div className="form-container">
       <h2>Login</h2>
-      <p>Register as a member to experience.</p>
+      <p>Get ready to experience.</p>
       <form className="signup-form mx-auto text-start ">
         <div className="form-group ">
           <label className='email p-2' htmlFor="email">E-mail</label>
@@ -36,9 +36,9 @@ function Login() {
           <input type="checkbox" className="form-check-input" id="terms" />
           <label className="form-check-label" htmlFor="terms">I agree to the terms of service</label>
         </div>
-        <button type="submit" className="btn btn-primary">Create Account</button>
+        <button type="submit" className="btn btn-primary">Login</button>
       </form>
-      <p className="signin-link">Already a member? <Link to="/login">Login</Link></p>
+      <p className="signin-link">Not a member? <Link to="/register">Register</Link></p>
     </div>
   </div>
   )

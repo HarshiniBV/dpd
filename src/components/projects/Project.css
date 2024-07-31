@@ -1,0 +1,40 @@
+/* src/Project.css */
+.projects-container {
+  padding: 20px;
+  background-color:#fce5dcb5;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.form {
+  margin: 20px 0;
+}
+
+.project-list {
+  margin-top: 20px;
+}
+
+.project-box {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.project-box h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.project-box p {
+  margin: 10px 0;
+}
+
+
+
+.hrr{
+  color: white;
+}

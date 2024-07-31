@@ -16,16 +16,14 @@ function App() {
       {
         path:'',
         element:<Home />,
-        children:[
-            {
-              path:'/',
-              element:<Projects />
-            },
-            {
-              path:'duplicationDetector',
-              element:<Duplicator />
-            }
-        ]
+      },
+      {
+        path:'projects',
+        element:<Projects />
+      },
+      {
+        path:'duplicator',
+        element:<Duplicator />
       },
       {
         path:'register',
