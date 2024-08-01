@@ -25,14 +25,14 @@ function App() {
         path:'duplicator',
         element:<Duplicator />
       },
-      {
-        path:'register',
-        element:<Register />
-      },
-      {
-        path:'login',
-        element:<Login />
-      }
+      // {
+      //   path:'register',
+      //   element:<Register />
+      // },
+      // {
+      //   path:'login',
+      //   element:<Login />
+      // }
     ]
   }])
 
