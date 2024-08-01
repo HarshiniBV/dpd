@@ -27,16 +27,16 @@ function Home() {
             <h1 className='p1'>PROJECTS</h1>
             <p>Find, Learn, and Inspire with College Projects</p>
             <div className="container-fluid">
-              <form className="d-flex mx-auto w-50" role="search">
+              <form className="d-flex mx-auto search-form" role="search">
                 <input className="form-control me-2" type="search" placeholder="Search..." aria-label="Search" />
                 <button className="btn btn-outline-success bg-success text-white" type="submit">Filter</button>
               </form>
               <div>
                 <div className="filters">
-                  <button type="button" className="btn btn-dark m-2">Type</button>
-                  <button type="button" className="btn btn-dark m-2">Branch</button>
-                  <button type="button" className="btn btn-dark m-2">Year</button>
-                  <button type="button" className="btn btn-dark m-2">Level</button>
+                  <button type="button" className="btn btn-danger m-2">Type</button>
+                  <button type="button" className="btn btn-danger m-2">Branch</button>
+                  <button type="button" className="btn btn-danger m-2">Year</button>
+                  <button type="button" className="btn btn-danger m-2">Level</button>
                 </div>
               </div>
             </div>
@@ -49,4 +49,5 @@ function Home() {
 }
 
 export default Home;
+
 
