@@ -11,7 +11,12 @@ function Navigation() {
             <li className='text-white pt-2'>Duplicate Project Detector</li>
             <div className='d-flex'>
              <Link className='nav-link text-white' to=''>Home</Link>
-            
+            <li className='nav-item'>
+                <Link className='nav-link text-white' to='register'>Register</Link>
+            </li>
+            <li className='nav-item'>
+                <Link className='nav-link text-white' to='login'>Login</Link>
+            </li>
             </div>
         </ul>
     </div>
