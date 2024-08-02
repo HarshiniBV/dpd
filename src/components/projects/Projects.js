@@ -21,7 +21,7 @@ function Projects() {
   
        
       setFilteredProjects(Array.isArray(res.data) ? res.data : []);
-        
+      console.log(filteredProjects)
        
     
     } catch (error) {
@@ -59,7 +59,7 @@ function Projects() {
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project, index) => (
               <DetailsCard1
-              data={project.project}
+              data={project.passage}
               score={Math.round(project.score*100)/100}
               />
              
