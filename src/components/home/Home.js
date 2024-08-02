@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import z from '../images/img4.jpg';
 import { Outlet } from 'react-router-dom';
 
+
 function Home() {
   return (
     <div className="home-container">
@@ -29,14 +30,15 @@ function Home() {
             <div className="container-fluid">
               <form className="d-flex mx-auto search-form" role="search">
                 <input className="form-control me-2" type="search" placeholder="Search..." aria-label="Search" />
-                <button className="btn btn-outline-success bg-success text-white" type="submit">Filter</button>
+                <button className="btn btn-outline-success bg-success text-white" type="submit">Search</button>
               </form>
               <div>
                 <div className="filters">
-                  <button type="button" className="btn btn-danger m-2">Type</button>
-                  <button type="button" className="btn btn-danger m-2">Branch</button>
-                  <button type="button" className="btn btn-danger m-2">Year</button>
-                  <button type="button" className="btn btn-danger m-2">Level</button>
+                  <button type="button" className="btn btn-light m-2">Type</button>
+                  <button type="button" className="btn btn-light m-2">Branch</button>
+                  <button type="button" className="btn btn-light m-2">Year</button>
+                  <button type="button" className="btn btn-light m-2">Level</button>
+                  <button type="button" className="btn btn-danger m-2">Filter</button>
                 </div>
               </div>
             </div>
