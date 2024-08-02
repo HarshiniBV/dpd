@@ -1,8 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DetailsCard from '../detailsCard/DetailsCard';
 import './Project.css';
+import axios from 'axios';
 
 function Projects() {
+  const [projects, setProjects] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredProjects, setFilteredProjects] = useState([]);
+
+  async function hello(query) {
+    try {
+      const res = await axios.post('http://10.45.45.81:5000/search', { query: query }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log(res.data);
+
+  
+       
+      setFilteredProjects(Array.isArray(res.data) ? res.data : []);
+        
+       
+    
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  }
+
+  const handleSearchChange = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    hello(query);
+  };
+  console.log(filteredProjects)
+
   return (
     <div className="projects-container">
       <div className="container-fluid">
@@ -10,25 +43,30 @@ function Projects() {
           <h1 className="text-center">PROJECTS</h1>
           <p className="text-center">Find, Learn, and Inspire</p>
         </div>
-        <hr className='hrr'/>
-        <form className="form d-flex justify-content-center" role="search">
-          <input className="form-control me-2 shadow" type="search" placeholder="Enter Title" aria-label="Search" />
-          <select className="form-select me-2 shadow">
-            <option>Select Project Type</option>
-            <option>Type 1</option>
-            <option>Type 2</option>
-          </select>
-          <select className="form-select me-2 shadow">
-            <option>2020</option>
-            <option>2021</option>
-            <option>2022</option>
-          </select>
+        <hr className='hrr' />
+        <form className="form d-flex justify-content-center" role="search" onSubmit={e => e.preventDefault()}>
+          <input
+            className="form-control me-2 shadow"
+            type="search"
+            placeholder="Enter Title"
+            aria-label="Search"
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
           <button className="btn btn-secondary shadow" type="submit">Search</button>
         </form>
         <div className="project-list">
-          <DetailsCard title="EXPLORING BRTS FOR ACCIDENT REDUCTION" abstract="BRTS is a higher user capacity transport system which delivers fast, reliable, comfort, accident less, and cost effective mode of movement for the customers." branch="IT" year="2020" />
-          <DetailsCard title="Numerical modelling of Secant Piles" abstract="Several forces like lateral and axial forces act on piles hence the magnitude and distribution of lateral earth pressure, and axial force are taken into consideration." branch="CSE" year="2021" />
-          <DetailsCard title="Biodegradation of commercially available plastic waste in soil under field condition" abstract="Different commercially available plastic waste are degraded and an attempt will be made to degrade them in composting condition." branch="ECE" year="2022"/>
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, index) => (
+              <DetailsCard
+              data={project.project}
+              score={project.score}
+              />
+             
+            ))
+          ) : (
+            <p>No projects found</p>
+          )}
         </div>
       </div>
     </div>
@@ -36,4 +74,3 @@ function Projects() {
 }
 
 export default Projects;
-
