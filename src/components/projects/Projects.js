@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import DetailsCard from '../detailsCard/DetailsCard';
 import './Project.css';
 import axios from 'axios';
 import DetailsCard1 from '../detailsCard/DeatilsCard1';
+
 function Projects() {
-  const [projects, setProjects] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProjects, setFilteredProjects] = useState([]);
 
@@ -17,11 +16,8 @@ function Projects() {
       });
 
       console.log(res.data);
-
-  
-       
       setFilteredProjects(Array.isArray(res.data) ? res.data : []);
-      console.log(filteredProjects)
+        
        
     
     } catch (error) {
@@ -34,7 +30,6 @@ function Projects() {
     setSearchQuery(query);
     hello(query);
   };
-  console.log(filteredProjects)
 
   return (
     <div className="projects-container">
@@ -59,10 +54,9 @@ function Projects() {
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project, index) => (
               <DetailsCard1
-              data={project.passage}
+              data={project.project}
               score={Math.round(project.score*100)/100}
               />
-             
             ))
           ) : (
             <p>No projects found</p>

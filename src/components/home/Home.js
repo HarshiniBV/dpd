@@ -1,16 +1,13 @@
 import React from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
-import z from '../images/img4.jpg';
 import { Outlet } from 'react-router-dom';
-
 
 function Home() {
   return (
     <div className="home-container">
       <div className="card text-bg-dark">
-        
-        <img src={z} className="card-img" alt="Background" />
+        <div className="background-image"></div>
         <div className="gradient-overlay"></div>
         <div className="card-img-overlay">
           <div className="search-page d-flex justify-content-center">

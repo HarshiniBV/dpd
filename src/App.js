@@ -33,10 +33,6 @@ function App() {
         path:'login',
         element:<Login />
       }
-      // ,{
-      //   path:'chart',
-      //   element:<PercentageChart percentage={75} />
-      // }
     ]
   }])
 
