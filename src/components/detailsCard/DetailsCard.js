@@ -1,11 +1,11 @@
 import React from 'react';
 import './DetailsCard.css';
-
+import PercentageChart from '../PercentageChart/PercentageChart';
 const DetailsCard = ({ data ,score}) => (
  
   <div className="project-box shadow-lg">
     <div className='d-flex justify-content-between'>
-      <h3 className='text-start'>{data['ProjectTitle']}</h3>
+      <h3 className='text-start m1'>{data['ProjectTitle']}</h3>
       <button type="button" className="btn btn-secondary">Secondary</button>
      
     </div>

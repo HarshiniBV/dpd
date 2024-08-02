@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DetailsCard from '../detailsCard/DetailsCard';
 import './Project.css';
 import axios from 'axios';
-
+import DetailsCard1 from '../detailsCard/DeatilsCard1';
 function Projects() {
   const [projects, setProjects] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -58,9 +58,9 @@ function Projects() {
         <div className="project-list">
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project, index) => (
-              <DetailsCard
+              <DetailsCard1
               data={project.project}
-              score={project.score}
+              score={Math.round(project.score*100)/100}
               />
              
             ))
