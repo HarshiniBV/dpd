@@ -187,3 +187,23 @@ p {
   }
 }
 
+
+.filters .dropdown-toggle {
+  background-color: white !important;
+  color: black !important; /* Change text color if needed */
+  border: 1px solid #ccc; /* Optional: Add a border to the button */
+}
+
+.filters .dropdown-menu {
+  background-color: white;
+  color: black;
+}
+
+.filters .dropdown-item {
+  color: black;
+}
+
+.filters .dropdown-item:hover {
+  background-color: #f8f9fa; /* Optional: Add a hover effect */
+}
+
