@@ -1,7 +1,11 @@
-/* src/Project.css */
+body {
+  background-color: #fce5dcb5;
+}
+
 .projects-container {
   padding: 20px;
-  background-color:#fce5dcb5;
+  background-color: #fce5dcb5;
+  min-height: 100vh;
 }
 
 .text-center {
@@ -33,8 +37,7 @@
   margin: 10px 0;
 }
 
-
-
-.hrr{
+.hrr {
   color: white;
 }
+
