@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Home.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 
 function Home() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/projects?query=${encodeURIComponent(searchQuery)}`);
+  };
+
   return (
     <div className="home-container">
       <div className="card text-bg-dark">
@@ -25,8 +37,15 @@ function Home() {
             <h1 className='p1'>PROJECTS</h1>
             <p>Find, Learn, and Inspire with College Projects</p>
             <div className="container-fluid">
-              <form className="d-flex mx-auto search-form" role="search">
-                <input className="form-control me-2" type="search" placeholder="Search..." aria-label="Search" />
+              <form className="d-flex mx-auto search-form" role="search" onSubmit={handleSearchSubmit}>
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search..."
+                  aria-label="Search"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
                 <button className="btn btn-outline-success bg-success text-white" type="submit">Search</button>
               </form>
               <div>
@@ -48,5 +67,6 @@ function Home() {
 }
 
 export default Home;
+
 
 

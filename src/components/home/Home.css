@@ -37,7 +37,7 @@
 }
 
 .search-page{
-  width: 70%;
+  width: 80%;
 }
 
 .card-img-overlay {
@@ -163,7 +163,7 @@ p {
 
 @media (max-width: 1200px) {
   .search-form {
-    width: 60%;
+    width: 80%;
   }
 }
 

@@ -1,25 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Project.css';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 import DetailsCard1 from '../detailsCard/DeatilsCard1';
 
 function Projects() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProjects, setFilteredProjects] = useState([]);
+  const location = useLocation();
 
-  async function hello(query) {
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const query = queryParams.get('query');
+    if (query) {
+      setSearchQuery(query);
+      searchProjects(query);
+    }
+  }, [location]);
+
+  async function searchProjects(query) {
     try {
       const res = await axios.post('http://10.45.45.81:5000/search', { query: query }, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
-
       console.log(res.data);
       setFilteredProjects(Array.isArray(res.data) ? res.data : []);
-        
-       
-    
     } catch (error) {
       console.error("Error fetching data: ", error);
     }
@@ -28,7 +35,7 @@ function Projects() {
   const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
-    hello(query);
+    searchProjects(query);
   };
 
   return (
@@ -48,14 +55,15 @@ function Projects() {
             value={searchQuery}
             onChange={handleSearchChange}
           />
-          <button className="btn btn-secondary shadow" type="submit">Search</button>
+          <button className="btn btn-success shadow" type="submit">Search</button>
         </form>
         <div className="project-list">
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project, index) => (
               <DetailsCard1
-              data={project.project}
-              score={Math.round(project.score*100)/100}
+                key={index}
+                data={project.project}
+                score={Math.round(project.score * 100) / 100}
               />
             ))
           ) : (
@@ -68,3 +76,5 @@ function Projects() {
 }
 
 export default Projects;
+
+
