@@ -130,8 +130,8 @@ function Home() {
                   <button type="button" className="btn btn-danger m-2" onClick={hello}>Filter</button>
                 </div> */}
                  <form className="filters" onSubmit={handleSubmit}>
-      <div className="dropdown m-2">
-        <label>Type</label>
+      <div className="dropdown m-2 pt-4">
+        {/* <label>Type</label> */}
         <select name="Type" value={filters.Type} onChange={handleChange} className="btn dropdown-button">
           <option value="">Select Type</option>
           <option value="BTech-Major">BTech-Major</option>
@@ -140,7 +140,7 @@ function Home() {
         </select>
       </div>
       <div className="dropdown m-2">
-        <label>Branch</label>
+        {/* <label>Branch</label> */}
         <select name="Department" value={filters.Branch} onChange={handleChange} className="btn dropdown-button">
           <option value="">Select Branch</option>
           <option value="IT">IT</option>
@@ -149,7 +149,7 @@ function Home() {
         </select>
       </div>
       <div className="dropdown m-2">
-        <label>Year</label>
+        {/* <label>Year</label> */}
         <select name="Year" value={filters.Year} onChange={handleChange} className="btn dropdown-button">
           <option value="">Select Year</option>
           <option value="2020">2020</option>
@@ -183,7 +183,7 @@ function Home() {
               />
             ))
           ) : (
-            <p>No projects found</p>
+            <p></p>
           )}
         </div>
             </div>
