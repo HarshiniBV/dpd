@@ -3,9 +3,12 @@ import './DetailsCard.css';
 import PercentageChart from '../PercentageChart/PercentageChart'
 const DetailsCard1 = ({ data ,score}) => (
  
-  <div className="project-box shadow-lg col-lg-5">
-    <div className='d-flex justify-content-between'>
-        <div className='justify-content-column m-1'>
+  <div className="project-box shadow-lg justify-content-center col-lg-5 container">
+
+    {/* <div className='d-flex justify-content-between'> */}
+    <div className='row'>
+        {/* <div className='justify-content-column m-1'> */}
+        <div className='col col-md-8'>
         <h5 className='text-start m-1 p-2'>Project_Id : {data['ProjectId']}</h5>
              <h5 className='text-start m-1 p-2'>Title :  {data['ProjectTitle']}</h5>
         <h5 className='text-start p-2 m-1'>Faculty  :  { data['ProjectSupervisor']}</h5>
@@ -16,9 +19,11 @@ const DetailsCard1 = ({ data ,score}) => (
        
         </div>
      
-        <div className='justifycontent-column'>
+        {/* <div className='justifycontent-column'> */}
+        <div className='col col-md-4'>
       <PercentageChart percentage={score*100} />
-      <p className='text-start m-1 p-2'><strong>Score : </strong> {score*100}</p>  </div>
+      <p className='text-start m-1 p-2'><strong>Score : </strong> {score*100}</p>  
+        </div>
      
     </div>
    
