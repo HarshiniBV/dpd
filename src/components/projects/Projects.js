@@ -10,17 +10,16 @@ function Projects() {
   const location = useLocation();
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const query = queryParams.get('query');
+    const query = new URLSearchParams(location.search).get('query');
     if (query) {
       setSearchQuery(query);
       searchProjects(query);
     }
-  }, [location]);
+  }, [location.search]);
 
   async function searchProjects(query) {
     try {
-      const res = await axios.post('http://10.45.45.81:5000/search', { query: query }, {
+      const res = await axios.post('http://10.45.8.73:5000/search', { query: query }, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -62,7 +61,7 @@ function Projects() {
             filteredProjects.map((project, index) => (
               <DetailsCard1
                 key={index}
-                data={project.project}
+                data={project.passage}
                 score={Math.round(project.score * 100) / 100}
               />
             ))
@@ -76,5 +75,3 @@ function Projects() {
 }
 
 export default Projects;
-
-

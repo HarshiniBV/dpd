@@ -36,7 +36,7 @@
   pointer-events: none;
 }
 
-.search-page{
+.search-page {
   width: 80%;
 }
 
@@ -154,6 +154,57 @@ p {
   color: grey;
 }
 
+/* Dropdown styling */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-content button:hover {
+  background-color: #f8f9fa;
+  color: blue;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropdown-button {
+  background-color: blue;
+  color: white;
+}
+
 /* Media Queries for Responsiveness */
 @media (min-width: 1200px) {
   .search-form {
@@ -235,23 +286,4 @@ p {
   .search-page ul.nav .nav-item {
     margin-right: 20px;
   }
-}
-
-.filters .dropdown-toggle {
-  background-color: white !important;
-  color: black !important; /* Change text color if needed */
-  border: 1px solid #ccc; /* Optional: Add a border to the button */
-}
-
-.filters .dropdown-menu {
-  background-color: white;
-  color: black;
-}
-
-.filters .dropdown-item {
-  color: black;
-}
-
-.filters .dropdown-item:hover {
-  background-color: #f8f9fa; /* Optional: Add a hover effect */
 }
