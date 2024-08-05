@@ -1,6 +1,6 @@
 import React from 'react';
 import './DetailsCard.css';
-import PercentageChart from '../PercentageChart/PercentageChart';
+//import PercentageChart from '../PercentageChart/PercentageChart';
 const DetailsCard = ({ data ,score}) => (
  
   <div className="project-box shadow-lg">
