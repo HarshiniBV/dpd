@@ -6,7 +6,7 @@ const PercentageChart = ({ percentage }) => {
 
   return (
     <div>
-      <svg viewBox="0 0 200 200" width="50%" height="50%">
+      <svg viewBox="0 0 200 200" width="80%" height="80%">
         <VictoryPie
           standalone={false}
           width={200}

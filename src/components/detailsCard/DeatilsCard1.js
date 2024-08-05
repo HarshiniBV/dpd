@@ -35,7 +35,7 @@ const DetailsCard1 = ({ data ,score}) => (
         {/* <div className='justifycontent-column'> */}
         <div className='col col-md-4'>
       <PercentageChart percentage={score*100} />
-      <p className='text-start m-1 p-2'><strong>Score : </strong> {score*100}</p>  
+      <p className='text-center m-1 p-2'><strong>Score : </strong> {score*100}</p>  
         </div>
      
     </div>

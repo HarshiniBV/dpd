@@ -68,7 +68,7 @@ function Home() {
                   <Link className='nav-link text-white' to='projects'>Projects</Link>
                 </li>
                 <li className='nav-item'>
-                  <Link className='nav-link text-white' to='duplicator'>Duplicator</Link>
+                  <Link className='nav-link text-white' to='projects'>Duplicator</Link>
                 </li>
               </ul>
               <div><Outlet/></div>

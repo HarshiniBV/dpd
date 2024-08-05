@@ -19,8 +19,9 @@ function Filters() {
             <h3 className='text-start m1'><strong>Title:</strong> {project.ProjectTitle}</h3>
             <h3 className='text-start m1'><strong>ProjectID:</strong>  {project.ProjectId}</h3>
             <h3 className='text-start m1'><strong>Year:</strong>  {project.Year}</h3>
-            <h3 className='text-start m1'><strong>Domain:</strong> {project.Domain}</h3>
-           
+            <h3 className='text-start m1'><strong>Domain:</strong> {project.AdditionalInfo.Domain}</h3>
+            <h3 className='text-start m1'><strong>Type:</strong> {project.Project_Type
+            }</h3>
           </div>
           
           {/* Uncomment these lines if you want to display abstract, branch, and year */}

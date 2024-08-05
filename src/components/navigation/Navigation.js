@@ -8,7 +8,7 @@ function Navigation() {
   return (
     <div>
         <ul className='nav bg-dark bg-gradient justify-content-between'>
-            <li className='title text-white pt-2'>Duplicate Project Detector</li>
+            <li className='title text-white pt-2'>DuplicaXpert</li>
             <div className='d-flex'>
              <Link className='nav-link text-white' to=''>Home</Link>
             {/* <li className='nav-item'>
