@@ -1,7 +1,7 @@
 import React from 'react';
 import './DetailsCard.css';
 import PercentageChart from '../PercentageChart/PercentageChart'
-const DetailsCard1 = ({ data }) => (
+const DetailsCard1 = ({ data ,score}) => (
  
   <div className="project-box shadow-lg justify-content-center col-lg-5 container">
 
@@ -33,7 +33,10 @@ const DetailsCard1 = ({ data }) => (
         </div>
      
         {/* <div className='justifycontent-column'> */}
-       
+        <div className='col col-md-4'>
+      <PercentageChart percentage={score*100} />
+      <p className='text-start m-1 p-2'><strong>Score : </strong> {score*100}</p>  
+        </div>
      
     </div>
   </div>

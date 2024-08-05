@@ -7,6 +7,7 @@ import Home from './components/home/Home'
 import Projects from './components/projects/Projects'
 import Duplicator from './components/duplicator/Duplicator'
 //import PercentageChart from './components/PercentageChart/PercentageChart';
+import Filters from '../src/components/filters/Filters'
 function App() {
  
   let browserRouter=createBrowserRouter([{
@@ -25,6 +26,10 @@ function App() {
         path:'duplicator',
         element:<Duplicator />
       },
+      {
+        path:'filtered',
+        element:<Filters/>
+      }
       // {
       //   path:'register',
       //   element:<Register />
