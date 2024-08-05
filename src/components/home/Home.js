@@ -36,13 +36,14 @@ function Home() {
     async function searchProjects(query) {
       console.log(query)
       try {
-        const res = await axios.post('http://10.45.45.81:5000/filter', { query: query }, {
+        const res = await axios.post('http://10.45.119.246:5000/filter', { query: query }, {
           headers: {
             'Content-Type': 'application/json'
           }
         });
         console.log(res.data);
-        setFilteredProjects(Array.isArray(res.data) ? res.data : []);
+        setFilteredProjects(res.data);
+        filteredProjects.map((data)=>console.log(data))
        
       } catch (error) {
         console.error("Error fetching data: ", error);
@@ -178,12 +179,12 @@ function Home() {
             filteredProjects.map((project, index) => (
               <DetailsCard1
                 key={index}
-                data={project.passage}
+                data={project}
                 score={Math.round(project.score * 100) / 100}
               />
             ))
           ) : (
-            <p></p>
+            <p>No Projects Found</p>
           )}
         </div>
             </div>
