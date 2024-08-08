@@ -2,8 +2,8 @@ import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import RootLayout from './components/rootLayout/RootLayout'
 import './App.css';
 import Home from './components/home/Home'
-//import Register from './components/register/Register'
-//import Login from './components/login/Login'
+import Register from './components/register/Register'
+import Login from './components/login/Login'
 import Projects from './components/projects/Projects'
 import Duplicator from './components/duplicator/Duplicator'
 //import PercentageChart from './components/PercentageChart/PercentageChart';
@@ -29,15 +29,15 @@ function App() {
       {
         path:'filtered',
         element:<Filters/>
+      },
+      {
+        path:'register',
+        element:<Register />
+      },
+      {
+        path:'login',
+        element:<Login />
       }
-      // {
-      //   path:'register',
-      //   element:<Register />
-      // },
-      // {
-      //   path:'login',
-      //   element:<Login />
-      // }
     ]
   }])
 

@@ -1,20 +1,62 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
+import axios from 'axios';
 import y from '../images/img3.png';
 import './Login.css';
 
 const CLIENT_ID = '606074391636-0725jnvffuktld7qbkk9ok05k61cr7h8.apps.googleusercontent.com';  // Your Google Client ID
 
 function Login() {
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+    agreeToTerms: false
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const url = 'http://10.45.119.246:5000/login';  // The URL for login endpoint
+
+    try {
+      const response = await axios.post(url, {
+        username: formData.username,
+        password: formData.password
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log('Login Success:', response.data.user.username);
+      localStorage.setItem('name', response.data.user.username);
+
+      // Handle successful login, e.g., save the user data or redirect to another page
+      navigate('/'); // Redirect to home page
+    } catch (error) {
+      console.error('Login Failed:', error.response ? error.response.data : error.message);
+      // Handle login failure, e.g., show an error message
+    }
+  };
+
   const onSuccess = (response) => {
-    console.log('Login Success:', response.profileObj);
-    // Handle successful login here, e.g., save the user data or redirect to another page
+    console.log('Google Login Success:', response.profileObj);
+    // Handle successful Google login here, e.g., save the user data or redirect to another page
   };
 
   const onFailure = (response) => {
-    console.log('Login Failed:', response);
-    // Handle login failure here
+    console.log('Google Login Failed:', response);
+    // Handle Google login failure here
   };
 
   return (
@@ -35,17 +77,40 @@ function Login() {
       <div className="form-container">
         <h2>Login</h2>
         <p>Get ready to experience.</p>
-        <form className="signup-form mx-auto text-start">
+        <form className="signup-form mx-auto text-start" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="email p-2" htmlFor="email">E-mail</label>
-            <input type="email" className="form-control" id="email" placeholder="E-mail" />
+            <label className="email p-2" htmlFor="username">Username</label>
+            <input
+              type="text"
+              className="form-control"
+              id="username"
+              name="username"
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleChange}
+            />
           </div>
           <div className="form-group">
             <label className="pass p-2" htmlFor="password">Password</label>
-            <input type="password" className="form-control" id="password" placeholder="Password" />
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
           </div>
           <div className="form-check">
-            <input type="checkbox" className="form-check-input" id="terms" />
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="terms"
+              name="agreeToTerms"
+              checked={formData.agreeToTerms}
+              onChange={handleChange}
+            />
             <label className="form-check-label" htmlFor="terms">I agree to the terms of service</label>
           </div>
           <button type="submit" className="btn btn-primary">Login</button>
