@@ -9,9 +9,10 @@ function Register() {
     id: '',
     username: '',
     name: '',
+    email: '',
     password: '',
-    role: '',
-    department: '',
+    role: 'student', // Default role to 'student'
+    department: '', // Default department to null
     agreeToTerms: false
   });
 
@@ -31,12 +32,13 @@ function Register() {
       id: formData.id,
       username: formData.username,
       name: formData.name,
+      email: formData.email,
       password: formData.password,
       role: formData.role,
       department: formData.department
     };
-
-    const url = 'http://10.45.119.246:5000/register';  // Updated URL
+     console.log(dataToSend)
+    const url = 'http://10.45.119.246:5000/register'; // Updated URL
 
     try {
       const response = await axios.post(url, dataToSend, {
@@ -45,8 +47,10 @@ function Register() {
         }
       });
       console.log(response.data);
+      if(response.data.message==='User registered successfully!'){
       
-      navigate('/'); // Redirect to home page
+      navigate('/login'); // Redirect to home page
+      }
     } catch (error) {
       console.error(`Error submitting data: ${error.message}`);
       // handle error (e.g., display an error message)
@@ -72,16 +76,39 @@ function Register() {
             <input type="text" className="form-control" id="name" name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
           </div>
           <div className="form-group">
+            <label className='p-2' htmlFor="email">Email</label>
+            <input type="email" className="form-control" id="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
+          </div>
+          <div className="form-group">
             <label className='p-2' htmlFor="password">Password</label>
             <input type="password" className="form-control" id="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
           </div>
           <div className="form-group">
             <label className='p-2' htmlFor="role">Role</label>
-            <input type="text" className="form-control" id="role" name="role" placeholder="Role" value={formData.role} onChange={handleChange} />
+            <select className="form-control" id="role" name="role" value={formData.role} onChange={handleChange}>
+              <option value="student">Student</option>
+              <option value="faculty">Faculty</option>
+            </select>
           </div>
           <div className="form-group">
             <label className='p-2' htmlFor="department">Department</label>
-            <input type="text" className="form-control" id="department" name="department" placeholder="Department" value={formData.department} onChange={handleChange} />
+            <select className="form-control" id="department" name="department" value={formData.department} onChange={handleChange}>
+              <option value="" disabled>Select Department</option>
+              <option value="CE">CE</option>
+              <option value="EEE">EEE</option>
+              <option value="ECE">ECE</option>
+              <option value="ME">ME</option>
+              <option value="CSE">CSE</option>
+              <option value="CS-AIML">CS-AIML</option>
+              <option value="CS-DS">CS-DS</option>
+              <option value="CS-IOT">CS-IOT</option>
+              <option value="CS-CyS">CS-CyS</option>
+              <option value="AI & DS">AI & DS</option>
+              <option value="CSBS">CSBS</option>
+              <option value="EIE">EIE</option>
+              <option value="IT">IT</option>
+              <option value="AE">AE</option>
+            </select>
           </div>
           <div className="form-check">
             <input type="checkbox" className="form-check-input" id="terms" name="agreeToTerms" checked={formData.agreeToTerms} onChange={handleChange} />

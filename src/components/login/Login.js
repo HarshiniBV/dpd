@@ -37,7 +37,7 @@ function Login() {
           'Content-Type': 'application/json'
         }
       });
-
+      console.log(response.data)
       console.log('Login Success:', response.data.user.username);
       localStorage.setItem('name', response.data.user.username);
 

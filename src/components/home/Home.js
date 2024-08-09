@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './Home.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import axios from 'axios';
-import DetailsCard1 from '../detailsCard/DeatilsCard1';
-import DetailsCard from '../detailsCard/DetailsCard';
+//import DetailsCard1 from '../detailsCard/DeatilsCard1';
+//import DetailsCard from '../detailsCard/DetailsCard';
 
 function Home() {
-  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [setFilteredProjects] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
@@ -63,18 +63,10 @@ function Home() {
         <div className="card-img-overlay">
           <div className="search-page d-flex justify-content-center">
             <div>
-              <ul className='nav justify-content-around'>
-                <li className='nav-item'>
-                  <Link className='nav-link text-white' to='projects'>Projects</Link>
-                </li>
-                <li className='nav-item'>
-                  <Link className='nav-link text-white' to='duplicator'>Duplicator</Link>
-                </li>
-              </ul>
               <div><Outlet /></div>
             </div>
             <h1 className='p1'>DuplicaXpert</h1>
-            <p>Find, Learn, and Inspire with College Projects</p>
+            <p>Find, Learn, and Inspire with Projects</p>
             <div className="container-fluid">
               <form className="d-flex mx-auto search-form" role="search" onSubmit={handleSearchSubmit}>
                 <input
