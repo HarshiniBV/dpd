@@ -73,7 +73,7 @@ function Home() {
               </ul>
               <div><Outlet /></div>
             </div>
-            <h1 className='p1'>PROJECTS</h1>
+            <h1 className='p1'>DuplicaXpert</h1>
             <p>Find, Learn, and Inspire with College Projects</p>
             <div className="container-fluid">
               <form className="d-flex mx-auto search-form" role="search" onSubmit={handleSearchSubmit}>
