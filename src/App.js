@@ -4,7 +4,8 @@ import RootLayout from './components/rootLayout/RootLayout'
 //import RootLayout1 from './componentf/rootLayout1/RootLayout1'
 
 import './App.css';
-//import FileUpload from './componentf/fileUpload/FileUpload'
+import FileUpload from './componentf/fileUpload/FileUpload'
+import ProjectTitles from './componentf/projectTitles/ProjectTitles'
 //import EditDeletePublish from './componentf/editDeletePublish/EditDeletePublish'
 
 import Home from './components/home/Home'
@@ -44,6 +45,13 @@ function App() {
       {
         path:'login',
         element:<Login />
+      },{
+        path:'fileUpload',
+        element:< FileUpload/>
+      }
+      ,{
+        path:'projectTitles',
+        element:<ProjectTitles/>
       }
     ]
   }])
