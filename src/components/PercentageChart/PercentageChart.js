@@ -18,7 +18,7 @@ const PercentageChart = ({ percentage }) => {
           style={{
             data: {
               fill: ({ datum }) => {
-                const color = datum.y > 30 ? 'red' : 'green';
+                const color = datum.y > 30 ? 'green' : 'brown';
                 return datum.x === 1 ? color : 'transparent';
               },
             },
