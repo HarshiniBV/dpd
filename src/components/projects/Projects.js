@@ -44,7 +44,7 @@ function Projects() {
           <h1 className="text-center">PROJECTS</h1>
           <p className="text-center">Find, Learn, and Inspire</p>
         </div>
-        <hr className='hrr' />
+        <hr className='hrr ' />
         <form className="form d-flex justify-content-center" role="search" onSubmit={e => e.preventDefault()}>
           <input
             className="form-control me-2 shadow"

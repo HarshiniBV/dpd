@@ -81,8 +81,8 @@ function Catalog() {
         <div className="catalog-card text-bg-dark">
           <div className="catalog-background-image"></div>
           <div className="gradient-overlay"></div>
-          <div className="card-img-overlay">
-            <h1 className='p1'>CATALOG PROJECTS</h1>
+          <div className="card-img-overlay1">
+            <h2 className='p2'>CATALOG PROJECTS</h2>
             <p>Find, Learn, and Inspire with College Projects</p>
             <div className="container-fluid">
               <form className="filters" onSubmit={handleSubmit}>

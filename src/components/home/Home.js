@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './Home.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
-import axios from 'axios';
-import DetailsCard from '../detailsCard/DetailsCard';
+//import axios from 'axios';
+//import DetailsCard from '../detailsCard/DetailsCard';
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState('');
