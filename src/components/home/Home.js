@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import axios from 'axios';
-import DetailsCard1 from '../detailsCard/DeatilsCard1';
+// import DetailsCard1 from '../detailsCard/DeatilsCard1';
 import DetailsCard from '../detailsCard/DetailsCard';
 
 function Home() {
@@ -26,6 +26,26 @@ function Home() {
     Year: ''
   });
 
+  const [departments, setDepartments] = useState([]);
+
+  const mtechDepartments = [
+    'CE-SE', 'CE-HE', 'CE-GTE', 'EE-PE', 'EE-PS', 'ME-CC', 'ME-AMS', 'EE-ES', 'EE-VLSI', 'CSE-SE', 'CSE-CNIS', 'EIE', 'CSE'
+  ];
+
+  const btechDepartments = [
+    'IT', 'CSE', 'ECE', 'ME', 'EIE', 'CE', 'EEE', 'AIML'
+  ];
+
+  useEffect(() => {
+    if (filters.Type === 'MTech-Major') {
+      setDepartments(mtechDepartments);
+    } else if (filters.Type === 'BTech-Major') {
+      setDepartments(btechDepartments);
+    } else {
+      setDepartments([]);
+    }
+  }, [filters.Type]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFilters({
@@ -37,7 +57,7 @@ function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     async function searchProjects(query) {
-      console.log(query);
+      
       try {
         const res = await axios.post('http://10.45.8.73:5000/filter', { query: query }, {
           headers: {
@@ -63,14 +83,6 @@ function Home() {
         <div className="card-img-overlay">
           <div className="search-page d-flex justify-content-center">
             <div>
-              <ul className='nav justify-content-around'>
-                <li className='nav-item'>
-                  <Link className='nav-link text-white' to='projects'>Projects</Link>
-                </li>
-                <li className='nav-item'>
-                  <Link className='nav-link text-white' to='duplicator'>Duplicator</Link>
-                </li>
-              </ul>
               <div><Outlet /></div>
             </div>
             <h1 className='p1'>PROJECTS</h1>
@@ -96,23 +108,22 @@ function Home() {
                       <option value="MTech-Major">MTech-Major</option>
                     </select>
                   </div>
-                  <div className="dropdown m-2">
-                    <select name="Department" value={filters.Branch} onChange={handleChange} className="btn dropdown-button">
-                      <option value="">Select Branch</option>
-                      <option value="IT">IT</option>
-                      <option value="CSE">CSE</option>
-                      <option value="ECE">ECE</option>
-                      <option value="ME">ME</option>
-                      <option value="EIE">EIE</option>
-                      <option value="CE">CE</option>
-                      <option value="EEE">EEE</option>
-                      <option value="AIML">AIML</option>
-                    </select>
-                  </div>
+                  {filters.Type && (
+                    <div className="dropdown m-2">
+                      <select name="Department" value={filters.Department} onChange={handleChange} className="btn dropdown-button">
+                        <option value="">Select Department</option>
+                        {departments.map((dept, index) => (
+                          <option key={index} value={dept}>{dept}</option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
                   <div className="dropdown m-2">
                     <select name="Year" value={filters.Year} onChange={handleChange} className="btn dropdown-button">
                       <option value="">Select Year</option>
                       <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
                       <option value="2023">2023</option>
                       <option value="2024">2024</option>
                     </select>

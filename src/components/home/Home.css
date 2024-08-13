@@ -1,3 +1,5 @@
+/* Home.css */
+
 .home-container {
   position: relative;
   height: 100vh;
@@ -37,10 +39,6 @@
   pointer-events: none;
 }
 
-.search-page {
-  width: 80%;
-}
-
 .card-img-overlay {
   position: absolute;
   top: 0;
@@ -60,7 +58,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 0;
+  width: 80%;
 }
 
 .p1 {
@@ -95,7 +93,8 @@ p {
   border-radius: 5px 0 0 5px;
 }
 
-.filter-button, .search-button {
+.filter-button,
+.search-button {
   background-color: white;
   border: 1px solid #ccc;
   padding: 10px;
@@ -177,7 +176,7 @@ p {
   position: absolute;
   background-color: white;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -253,8 +252,17 @@ p {
   }
 
   .filters button {
-    width: 30%; /* Reduced width for buttons */
+    width: 100%;
     margin-bottom: 10px;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropdown-button {
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -272,12 +280,12 @@ p {
   }
 
   .filters button {
-    width: 40%; /* Further reduced width for buttons on small screens */
+    width: 100%;
     margin-bottom: 10px;
   }
 
   .search-form {
-    width: 90%; /* Full width search form on small screens */
+    width: 90%;
   }
 
   .search-page ul.nav {
