@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Catalog.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import DetailsCard from '../detailsCard/DetailsCard';
+import DetailsCard1 from '../detailsCard/DeatilsCard1';
+import Pagination from '../Pagination/Pagination';
 
 function Catalog() {
   const [filteredProjects, setFilteredProjects] = useState([]);
@@ -12,8 +12,9 @@ function Catalog() {
     Year: ''
   });
   const [departments, setDepartments] = useState([]);
-  
-  const navigate = useNavigate();
+  const [searchPerformed, setSearchPerformed] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [projectsPerPage] = useState(25);
 
   const mtechDepartments = [
     'CE-SE', 'CE-HE', 'CE-GTE', 'EE-PE', 'EE-PS', 'ME-CC', 'ME-AMS', 'EE-ES', 'EE-VLSI', 'CSE-SE', 'CSE-CNIS', 'EIE', 'CSE'
@@ -43,6 +44,8 @@ function Catalog() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSearchPerformed(true);
+    setCurrentPage(1);
     searchProjects(filters);
   };
 
@@ -55,11 +58,19 @@ function Catalog() {
       });
       console.log(res.data);
       setFilteredProjects(Array.isArray(res.data) ? res.data : []);
-      navigate('/filtered', { state: res.data });
     } catch (error) {
       console.error("Error fetching data: ", error);
+      setFilteredProjects([]);
     }
   }
+
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
@@ -68,7 +79,7 @@ function Catalog() {
           <div className="catalog-background-image"></div>
           <div className="gradient-overlay"></div>
           <div className="card-img-overlay">
-            <h1 className='p1'>FILTER PROJECTS</h1>
+            <h1 className='p1'>CATALOG PROJECTS</h1>
             <p>Find, Learn, and Inspire with College Projects</p>
             <div className="container-fluid">
               <form className="filters" onSubmit={handleSubmit}>
@@ -101,21 +112,44 @@ function Catalog() {
                 </div>
                 <button type="submit" className="btn btn-danger">Filter</button>
               </form>
-              <div className="project-list">
-                {filteredProjects.length > 0 ? (
-                  filteredProjects.map((project, index) => (
-                    <DetailsCard
-                      key={index}
-                      ProjectTitle={project.ProjectTitle}
-                      Description={project.Description}
-                      Year={project.Year}
-                      Department={project.Department}
+              {searchPerformed && (
+                <div className="selected-filters">
+                  <h5>Selected Filters:</h5>
+                  <ul>
+                    {filters.Type && <li>Type: {filters.Type}</li>}
+                    {filters.Department && <li>Department: {filters.Department}</li>}
+                    {filters.Year && <li>Year: {filters.Year}</li>}
+                  </ul>
+                </div>
+              )}
+              {searchPerformed && filteredProjects.length === 0 ? (
+                <div className="no-projects">The Data Will Update Soon</div>
+              ) : (
+                searchPerformed && (
+                  <>
+                    <Pagination
+                      projectsPerPage={projectsPerPage}
+                      totalProjects={filteredProjects.length}
+                      paginate={paginate}
+                      currentPage={currentPage}
                     />
-                  ))
-                ) : (
-                  <p>No projects found</p>
-                )}
-              </div>
+                    <div className="project-list">
+                      {currentProjects.map((project, index) => (
+                        <DetailsCard1
+                          key={index}
+                          data={project}
+                        />
+                      ))}
+                    </div>
+                    <Pagination
+                      projectsPerPage={projectsPerPage}
+                      totalProjects={filteredProjects.length}
+                      paginate={paginate}
+                      currentPage={currentPage}
+                    />
+                  </>
+                )
+              )}
             </div>
           </div>
         </div>

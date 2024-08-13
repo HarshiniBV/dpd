@@ -1,23 +1,42 @@
+import React from 'react';
+import './DetailsCard.css';
+import PercentageChart from '../PercentageChart/PercentageChart';
 
-import React from 'react'
-import './DetailsCard.css'
-function DetailsCard(data) {
-  const data1=data.data
-  console.log(data1)
-  return (
-    <div className="project-box shadow-lg text-success">
-    <div className='d-flex justify-content-between'>
-      <h3 className='text-start m1'>{data1['ProjectTitle']}</h3>
-      <button type="button" className="btn btn-secondary">Secondary</button>
-     
+const DetailsCard1 = ({ data, score }) => (
+  <div className="project-box shadow-lg container">
+    <div className='row'>
+      <div className='col-md-8 project-details'>
+        
+        <h5 className='text-start m-1 p-2'>
+          <strong></strong> {data['ProjectTitle']}
+        </h5>
+        <h5 className='text-start m-1 p-2'>
+          <strong>Faculty:</strong> {data['ProjectSupervisor']}
+        </h5>
+        <h5 className='text-start m-1 p-2'>
+          <strong>Type:</strong> {data['Project_Type']}
+        </h5>
+        <h5 className='text-start m-1 p-2'>
+          <strong>Department:</strong> {data['Department']}
+        </h5>
+        <h5 className='text-start m-1 p-2'>
+          <strong>Domain:</strong> {data.AdditionalInfo['Domain']}
+        </h5>
+        <h5 className='text-start m-1 p-2'>
+          <strong>Year:</strong> {data['ProjectId'].substring(0, 4)}
+        </h5>
+        <h5 className='text-start m-1 p-2'>
+          <strong>Project_Id:</strong> {data['ProjectId']}
+        </h5>
+      </div>
+      <div className='col-md-4 chart-container'>
+        <div className="percentage-chart">
+          <PercentageChart percentage={score * 100} />
+        </div>
+        <p className='text-center m-1 p-2'><strong>Matching percentage</strong></p>
+      </div>
     </div>
-  
-    {/* <p className='text-start'><strong>Abstract:</strong> {abstract}</p>
-    <p className='text-start'><strong>Branch:</strong> {branch}</p>
-    // <p className='text-start'><strong>Year:</strong> {year}</p> */}
-   
   </div>
-  )
-}
+);
 
-export default DetailsCard
+export default DetailsCard1;

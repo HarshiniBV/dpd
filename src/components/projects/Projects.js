@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './Project.css';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import DetailsCard1 from '../detailsCard/DeatilsCard1';
+import DetailsCard1 from '../detailsCard/DetailsCard';
 
 function Projects() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProjects, setFilteredProjects] = useState([]);
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ function Projects() {
   }, [location.search]);
 
   async function searchProjects(query) {
+    setLoading(true);
     try {
       const res = await axios.post('http://10.45.8.73:5000/search', { query: query }, {
         headers: {
@@ -28,6 +30,8 @@ function Projects() {
       setFilteredProjects(Array.isArray(res.data) ? res.data : []);
     } catch (error) {
       console.error("Error fetching data: ", error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -57,7 +61,13 @@ function Projects() {
           <button className="btn btn-success shadow" type="submit">Search</button>
         </form>
         <div className="project-list">
-          {filteredProjects.length > 0 ? (
+          {loading ? (
+            <div className="text-center">
+              <div className="spinner-border" role="status">
+                <span className="sr-only"></span>
+              </div>
+            </div>
+          ) : filteredProjects.length > 0 ? (
             filteredProjects.map((project, index) => (
               <DetailsCard1
                 key={index}
