@@ -40,7 +40,7 @@ function Projects() {
   return (
     <div className="projects-container">
       <div className="container-fluid">
-        <div className='box1 p-2 text-dark'>
+        <div className='box1  text-dark'>
           <h1 className="text-center">PROJECTS</h1>
           <p className="text-center">Find, Learn, and Inspire</p>
         </div>

@@ -8,7 +8,7 @@ function RootLayout() {
   return (
     <div>
         <NavigationBar />
-        <div style={{minHeight:'85vh'}}>
+        <div style={{minHeight:'90vh'}}>
         <Outlet />
         </div>
         <Footer />

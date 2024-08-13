@@ -5,7 +5,7 @@ body {
 .projects-container {
   padding: 20px;
   background-color: #fce5dcb5;
-  min-height: 85vh;
+  min-height: 90vh;
 }
 
 .text-center {
@@ -38,5 +38,5 @@ body {
 }
 
 .hrr {
-  color: white;
+  color:black;
 }
