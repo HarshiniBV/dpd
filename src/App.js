@@ -7,6 +7,7 @@ import './App.css';
 import FileUpload from './componentf/fileUpload/FileUpload'
 import ProjectTitles from './componentf/projectTitles/ProjectTitles'
 //import EditDeletePublish from './componentf/editDeletePublish/EditDeletePublish'
+import AddMember from './componentf/addMember/AddMember'
 
 import Home from './components/home/Home'
 //import Home1 from './componentf/home1/Home1'
@@ -52,6 +53,10 @@ function App() {
       ,{
         path:'projectTitles',
         element:<ProjectTitles/>
+      }
+      ,{
+        path:'addMember',
+        element:<AddMember/>
       }
     ]
   }])
