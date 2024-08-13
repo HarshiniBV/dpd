@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Catalog.css';
-// import axios from 'axios';
+import axios from 'axios';
 import DetailsCard1 from '../detailsCard/DeatilsCard1';
 import Pagination from '../Pagination/Pagination';
 
@@ -49,22 +49,19 @@ function Catalog() {
     searchProjects(filters);
   };
 
-  // Mock the searchProjects function
   async function searchProjects(query) {
-    const mockData = [
-      { id: 1, title: "Project 1", type: "BTech-Major", department: "CSE", year: "2023" },
-      { id: 2, title: "Project 2", type: "MTech-Major", department: "CE-SE", year: "2022" },
-      // Add more mock projects here as needed
-    ];
-    // Filter the mock data based on the query
-    const filtered = mockData.filter(project => {
-      return (
-        (!query.Type || project.type === query.Type) &&
-        (!query.Department || project.department === query.Department) &&
-        (!query.Year || project.year === query.Year)
-      );
-    });
-    setFilteredProjects(filtered);
+    try {
+      const res = await axios.post('http://10.45.8.73:5000/filter', { query: query }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      console.log(res.data);
+      setFilteredProjects(Array.isArray(res.data) ? res.data : []);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+      setFilteredProjects([]);
+    }
   }
 
   const indexOfLastProject = currentPage * projectsPerPage;
@@ -162,3 +159,4 @@ function Catalog() {
 }
 
 export default Catalog;
+
