@@ -1,0 +1,64 @@
+.project-box {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.project-box h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.project-box p {
+  margin: 10px 0;
+  border-radius: 2px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .project-box {
+    padding: 15px;
+    margin: 15px 0;
+  }
+
+  .project-box h3 {
+    font-size: 1.3rem;
+  }
+
+  .project-box p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-box {
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  .project-box h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-box p {
+    font-size: 0.9rem;
+  }
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.percentage-chart {
+  width: 200px; /* Increase the size of the chart */
+  height: 200px; /* Increase the size of the chart */
+}
+/* Add this rule to make the h5 elements bold */
+h5.text-start {
+  font-weight: bold;
+}
