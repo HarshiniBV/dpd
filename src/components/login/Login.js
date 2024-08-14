@@ -40,6 +40,7 @@ function Login() {
       console.log(response.data)
       console.log('Login Success:', response.data.user.username);
       localStorage.setItem('name', response.data.user.username);
+     
 
       // Handle successful login, e.g., save the user data or redirect to another page
       navigate('/'); // Redirect to home page

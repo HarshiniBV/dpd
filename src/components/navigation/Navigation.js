@@ -10,10 +10,11 @@ function Navigation() {
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('name');
+    console.log(storedUsername)
     if (storedUsername) {
       setUsername(storedUsername);
     }
-  }, []);
+  }, [10]);
 
   const handleLogout = () => {
     localStorage.removeItem('name');
@@ -38,6 +39,9 @@ function Navigation() {
             <>
               <li className='nav-item'>
                 <Link className='nav-link text-white' to='/login'>Login</Link>
+              </li>
+              <li className='nav-item'>
+                <Link className='nav-link text-white' to='/register'>Register</Link>
               </li>
             </>
           ) : (

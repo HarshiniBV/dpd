@@ -60,5 +60,5 @@
 }
 /* Add this rule to make the h5 elements bold */
 h5.text-start {
-  font-weight: bold;
+  font-style: italic;
 }

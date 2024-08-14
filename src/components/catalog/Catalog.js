@@ -76,7 +76,7 @@ function Catalog() {
     <div>
       <div className="catalog-container">
         <div className="catalog-card text-bg-dark">
-          <div className="catalog-background-image"></div>
+          {/* <div className="catalog-background-image"></div> */}
           <div className="gradient-overlay"></div>
           <div className="card-img-overlay">
             <h1 className='p1'>CATALOG PROJECTS</h1>
@@ -114,8 +114,8 @@ function Catalog() {
               </form>
               {searchPerformed && (
                 <div className="selected-filters">
-                  <h5>Selected Filters:</h5>
-                  <ul>
+                  <h5 className='text-center'>Selected Filters</h5>
+                  <ul className='text-center'>
                     {filters.Type && <li>Type: {filters.Type}</li>}
                     {filters.Department && <li>Department: {filters.Department}</li>}
                     {filters.Year && <li>Year: {filters.Year}</li>}
