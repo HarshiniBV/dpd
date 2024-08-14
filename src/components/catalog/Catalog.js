@@ -75,8 +75,9 @@ function Catalog() {
   return (
     <div>
       <div className="catalog-container">
-        <div className="catalog-card text-bg-dark">
-          <div className="catalog-background-image"></div>
+      <div className="background-image1"></div>
+        <div className="catalog-card ">
+        
           <div className="gradient-overlay"></div>
           <div className="card-img-overlay1">
             <h2 className='p2'>CATALOG PROJECTS</h2>

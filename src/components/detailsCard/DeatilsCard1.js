@@ -3,7 +3,7 @@ import './DetailsCard1.css';
 import PercentageChart from '../PercentageChart/PercentageChart';
 
 const DetailsCard1 = ({ data, score }) => (
-  <div className="project-box shadow-lg justify-content-center col-lg-5 container">
+  <div className="project-box shadow-lg justify-content-center col-lg-5 container m-1">
     <div className="row">
       <div className="col-12">
         <h3 className="text-center m-1 p-2">
